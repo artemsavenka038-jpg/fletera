@@ -135,6 +135,102 @@ const SL_EN = { FREE:'Free',FORWARD:'On route',LOADED:'Loaded',BACK:'Return',AT_
   SERVICE:'Service',WASH:'Wash',DOCS:'Waybill',PROBLEM:'Problem',NEED_SERVICE:'Needs service' };
 const _SL = () => window._fletera_lang==='en' ? SL_EN : SL;
 
+// ── Full i18n system ──────────────────────────────────────────
+const TRANSLATIONS = {
+  ru: {
+    tab_park:'Парк', tab_moving:'Рейс', tab_clients:'Клиенты', tab_orders:'Заказы', tab_future:'Планирование', tab_log:'Журнал',
+    hdr_free:'своб', hdr_route:'рейс', hdr_issues:'проблема',
+    btn_driver:'Я водитель', btn_theme_dark:'🌙 Тёмная', btn_theme_light:'☀️ Светлая',
+    flt_all:'Все', flt_free:'Своб', flt_moving:'Рейс', flt_back:'Обратный', flt_problem:'Проблема', flt_service:'Сервис', flt_need:'Нужен сервис', flt_docs:'Путевой',
+    lbl_location:'Локация', lbl_freed:'Освоб', lbl_cargo_to:'Везёт туда', lbl_cargo_back:'Везёт обратно', lbl_client:'Клиент', lbl_waybill:'Путевой', lbl_return_cargo:'Обратный груз', lbl_loading:'Загрузка', lbl_unloading:'Выгрузка', lbl_trips:'рейса', lbl_hired:'Привлечённый', lbl_private:'Приватный',
+    btn_to_route:'🚀 В рейс', btn_change_client:'Изм. клиента', btn_return:'Обратный', btn_message:'Сообщение', btn_swap:'Пересадка', btn_free_short:'Своб', btn_waybill_btn:'Путевой', btn_free_full:'Свободный', btn_link:'Ссылка', btn_log:'Журнал',
+    modal_forward_new:'🚀 Назначить рейс', modal_forward_edit:'✏️ Редактировать рейс',
+    modal_back_title:'↩ Обратный груз',
+    modal_order_new:'📋 Новый заказ', modal_order_edit:'✏️ Редактировать заказ',
+    modal_client_add:'➕ Новый клиент', modal_client_edit:'✏️ Редактировать',
+    modal_plan:'📅 Планирование следующего рейса', modal_swap:'?? Пересадка водителя', modal_login:'Вход в Fletera',
+    btn_save:'Сохранить', btn_save_changes:'Сохранить изменения', btn_cancel:'Отмена', btn_delete:'Удалить', btn_back:'← Назад', btn_add:'Добавить', btn_login:'Войти →', btn_add_stop:'+ Добавить точку загрузки',
+    btn_add_client:'+ Добавить клиента', btn_add_order:'+ Добавить заказ', btn_save_back:'Сохранить обратку',
+    form_plate:'Номер', form_driver:'Водитель', form_phone:'Телефон', form_hired:'Привлечённый', form_carrier:'Перевозчик', form_client:'Клиент', form_load_addr:'Адрес загрузки', form_unload_addr:'Адрес выгрузки', form_load_time:'Время загрузки', form_free_time:'Время освоб.', form_cargo:'Груз', form_temp:'Температ.', form_rate:'Ставка', form_comment:'Примечание',
+    badge_on_service:'Машина на сервисе', badge_need_service:'Нужен сервис',
+    log_title:'Журнал рейсов', log_empty:'📒 Журнал пуст',
+    mov_return_assigned:'↩ Обратный груз назначен:', mov_unload_time:'Выгрузка:',
+    mov_ready_soon:'Машина освободится через ~{h}ч. Готовьте обратку.',
+    mov_ready_soon2:'Освободится ~{h}ч. Время искать обратный груз.',
+    mov_active:'Активный рейс.',
+    clients_title:'Клиенты', clients_active:'В рейсе',
+    orders_title:'Заказы', plan_title:'Планирование рейсов',
+    no_orders:'Нет доступных заказов. Добавьте заказы во вкладке «Заказы».',
+    swap_done:'✓ Пересадка выполнена',
+    fill_fields:'Заполните поля', add_confirm:'Добавить ✓', enter_name:'Введите название',
+    trips_count:'{n} рейса', trips_count0:'0 рейсов', return_cargo_label:'Обратный груз',
+    wa_return_tab:'↩ Обратный груз',
+    wa_loading:'📍 Загрузка', wa_unloading:'🎯 Выгрузка', wa_client:'🏢 Клиент',
+    link_label:'Ссылка для отметки', pin_label:'PIN',
+    send_wa:'📱 Открыть в WhatsApp', send_max:'🔵 Max', copy_btn:'📋',
+    link_wa:'📤 Ссылка в WA', link_max:'📤 Ссылка в Max',
+    drv_location:'Моё местонахождение', drv_status:'Текущий статус', drv_btn_free:'Свободный',
+    drv_saved:'✓ Сохранено', drv_error:'Ошибка',
+    ph_search:'Поиск по водителю, номеру...', ph_pin:'PIN-код',
+    ph_plate:'АА 0000-7', ph_driver:'Иванов Иван Иванович', ph_phone:'+375291234567',
+    ph_cargo:'Зерно, металлопрокат...', ph_temp:'+2', ph_rate:'15000',
+    ph_city:'Минск', ph_addr:'ул. Примерная 1', ph_comment:'Дополнительная информация...',
+    ph_carrier:'ООО Транзит', confirm_delete:'Удалить?',
+    auth_title:'Fletera', auth_subtitle:'Диспетчерская система', auth_pin_label:'PIN-код', auth_error:'Неверный PIN',
+  },
+  en: {
+    tab_park:'Fleet', tab_moving:'On route', tab_clients:'Clients', tab_orders:'Orders', tab_future:'Planning', tab_log:'Log',
+    hdr_free:'free', hdr_route:'route', hdr_issues:'issues',
+    btn_driver:'Driver login', btn_theme_dark:'🌙 Dark', btn_theme_light:'☀️ Light',
+    flt_all:'All', flt_free:'Free', flt_moving:'Route', flt_back:'Return', flt_problem:'Problem', flt_service:'Service', flt_need:'Needs service', flt_docs:'Waybill',
+    lbl_location:'Location', lbl_freed:'Free at', lbl_cargo_to:'Outbound', lbl_cargo_back:'Return cargo', lbl_client:'Client', lbl_waybill:'Waybill', lbl_return_cargo:'Return cargo', lbl_loading:'Loading', lbl_unloading:'Unloading', lbl_trips:'trips', lbl_hired:'Contracted', lbl_private:'Private',
+    btn_to_route:'🚀 Assign', btn_change_client:'Edit client', btn_return:'Return', btn_message:'Message', btn_swap:'Swap', btn_free_short:'Free', btn_waybill_btn:'Waybill', btn_free_full:'Set free', btn_link:'Link', btn_log:'Log',
+    modal_forward_new:'🚀 Assign route', modal_forward_edit:'✏️ Edit route',
+    modal_back_title:'↩ Return cargo',
+    modal_order_new:'📋 New order', modal_order_edit:'✏️ Edit order',
+    modal_client_add:'➕ New client', modal_client_edit:'✏️ Edit',
+    modal_plan:'📅 Plan next route', modal_swap:'?? Driver swap', modal_login:'Fletera Login',
+    btn_save:'Save', btn_save_changes:'Save changes', btn_cancel:'Cancel', btn_delete:'Delete', btn_back:'← Back', btn_add:'Add', btn_login:'Login →', btn_add_stop:'+ Add loading point',
+    btn_add_client:'+ Add client', btn_add_order:'+ Add order', btn_save_back:'Save return cargo',
+    form_plate:'Plate', form_driver:'Driver', form_phone:'Phone', form_hired:'Contracted', form_carrier:'Carrier', form_client:'Client', form_load_addr:'Loading address', form_unload_addr:'Unloading address', form_load_time:'Load time', form_free_time:'Free time', form_cargo:'Cargo', form_temp:'Temp.', form_rate:'Rate', form_comment:'Notes',
+    badge_on_service:'On service', badge_need_service:'Needs service',
+    log_title:'Trip log', log_empty:'📒 Log is empty',
+    mov_return_assigned:'↩ Return cargo assigned:', mov_unload_time:'Unload:',
+    mov_ready_soon:'Truck free in ~{h}h. Prepare return cargo.',
+    mov_ready_soon2:'Free in ~{h}h. Time to find return cargo.',
+    mov_active:'Active route.',
+    clients_title:'Clients', clients_active:'On route',
+    orders_title:'Orders', plan_title:'Route planning',
+    no_orders:'No orders available. Add orders in the Orders tab.',
+    swap_done:'✓ Swap completed',
+    fill_fields:'Fill in fields', add_confirm:'Add ✓', enter_name:'Enter name',
+    trips_count:'{n} trips', trips_count0:'0 trips', return_cargo_label:'Return cargo',
+    wa_return_tab:'↩ Return cargo',
+    wa_loading:'📍 Loading', wa_unloading:'🎯 Unloading', wa_client:'🏢 Client',
+    link_label:'Driver link', pin_label:'PIN',
+    send_wa:'📱 Open in WhatsApp', send_max:'🔵 Max', copy_btn:'📋',
+    link_wa:'📤 Link via WA', link_max:'📤 Link via Max',
+    drv_location:'My location', drv_status:'Current status', drv_btn_free:'Set free',
+    drv_saved:'✓ Saved', drv_error:'Error',
+    ph_search:'Search by driver, plate...', ph_pin:'PIN code',
+    ph_plate:'AA 0000-7', ph_driver:'John Smith', ph_phone:'+375291234567',
+    ph_cargo:'Grain, steel...', ph_temp:'+2', ph_rate:'15000',
+    ph_city:'Minsk', ph_addr:'Example St 1', ph_comment:'Additional info...',
+    ph_carrier:'Transit LLC', confirm_delete:'Delete?',
+    auth_title:'Fletera', auth_subtitle:'Dispatch system', auth_pin_label:'PIN code', auth_error:'Wrong PIN',
+  }
+};
+// t() — main translation function (defined AFTER TRANSLATIONS, no circular refs)
+const t = (key, vars) => {
+  try {
+    const lang = (window._fletera_lang === 'en') ? 'en' : 'ru';
+    const dict = TRANSLATIONS[lang];
+    let s = (dict && dict[key]) ? dict[key] : (TRANSLATIONS.ru[key] || key);
+    if (vars) Object.keys(vars).forEach(k => { s = s.replace('{'+k+'}', vars[k]); });
+    return s;
+  } catch(e) { return key; }
+};
+
 // ── Demo data ─────────────────────────────────────────────────
 const _v21 = () => {
   const h = n => _s18(_u20(), n);
@@ -419,7 +515,7 @@ function _a0({truck,clients,onSave,onClose}) {
     ce('button',{onClick:addStop,style:{width:'100%',padding:'9px',marginBottom:10,
       background:'rgba(59,130,246,.08)',border:'1px dashed rgba(59,130,246,.4)',
       borderRadius:8,color:'#3b82f6',fontWeight:700,fontSize:12,cursor:'pointer',fontFamily:'inherit'}},
-      '+ Добавить точку загрузки'),
+      t('btn_add_stop')),
     ce('label',{style:{display:'flex',alignItems:'center',gap:8,fontSize:11,
       color:'var(--text2)',cursor:'pointer',marginBottom:12}},
       ce('input',{type:'checkbox',checked:joinTwo,onChange:function(e){setJoinTwo(e.target.checked);},
@@ -428,7 +524,7 @@ function _a0({truck,clients,onSave,onClose}) {
     ce('div',{style:{display:'flex',gap:8}},
       ce('button',{onClick:onClose,style:{flex:1,padding:'10px',background:'var(--bg2)',
         border:'1px solid var(--border2)',borderRadius:9,color:'var(--text3)',
-        fontSize:13,fontWeight:700,cursor:'pointer'}},'Отмена'),
+        fontSize:13,fontWeight:700,cursor:'pointer'}},t('btn_cancel')),
       ce('button',{onClick:save,style:{flex:1,padding:'10px',
         background:'linear-gradient(135deg,#3b82f6,#06b6d4)',border:'none',
         borderRadius:9,color:'#fff',fontSize:13,fontWeight:800,cursor:'pointer'}},
@@ -472,7 +568,7 @@ function _b1({truck,orders,clients,onSave,onClose}) {
 
   const dark = {background:'var(--bg3)',border:'1px solid var(--border)',borderRadius:8,padding:'8px 10px'};
 
-  return ce(Modal,{title:`↩ Обратный груз — ${truck.plate.split('/')[0].trim()}`,onClose,wide:true},
+  return ce(Modal,{title:t('modal_back_title')+' — '+truck.plate.split('/')[0].trim(),onClose,wide:true},
     // Mode toggle
     ce('div',{style:{display:'flex',gap:6,marginBottom:10}},
       ['order','manual'].map(m=>ce('button',{key:m,onClick:()=>setMode(m),style:{
@@ -487,7 +583,7 @@ function _b1({truck,orders,clients,onSave,onClose}) {
     mode==='order' && ce('div',{style:{...dark,marginBottom:10}},
       availOrders.length===0
         ? ce('div',{style:{fontSize:11,color:'var(--text3)',textAlign:'center',padding:12}},
-            'Нет доступных заказов. Добавьте заказы во вкладке «Заказы».')
+            t('no_orders'))
         : availOrders.map(o=>{
             const cl=clients?.find(c=>c.id===o.cid);
             return ce('div',{key:o.id,onClick:()=>setSelectedOid(String(o.id)),style:{
@@ -527,11 +623,11 @@ function _b1({truck,orders,clients,onSave,onClose}) {
     ce('div',{style:{display:'flex',gap:8,marginTop:8}},
       ce('button',{onClick:onClose,style:{flex:1,padding:'10px',background:'var(--bg2)',
         border:'1px solid var(--border2)',borderRadius:9,color:'var(--text3)',
-        fontSize:13,fontWeight:700,cursor:'pointer'}},'Отмена'),
+        fontSize:13,fontWeight:700,cursor:'pointer'}},t('btn_cancel')),
       ce('button',{onClick:save,style:{flex:1,padding:'10px',
         background:'linear-gradient(135deg,#06b6d4,#3b82f6)',border:'none',
         borderRadius:9,color:'#fff',fontSize:13,fontWeight:800,cursor:'pointer'}},
-        'Сохранить обратку')
+        t('btn_save_back'))
     )
   );
 }
@@ -555,8 +651,8 @@ function _c2({truck,clients,orders,onClose}) {
     fwdTrips.forEach(function(tr,i){
       var tc2=clients&&clients.find(function(c){return c.id===tr.clientId;});
       lines.push('🔵 *Точка '+(i+1)+': '+(tr.clientName||'—')+'*');
-      if(tr.from) lines.push('📍 Загрузка: '+tr.from);
-      if(tr.to)   lines.push('🎯 Выгрузка: '+tr.to);
+      if(tr.from) lines.push(t('wa_loading')+': '+tr.from);
+      if(tr.to)   lines.push(t('wa_unloading')+': '+tr.to);
       if(tr.loadAt) lines.push('🕐 Время: '+_q16(tr.loadAt));
       if(tc2&&tc2.temp) lines.push('🌡 Темп: '+tc2.temp+'°C');
       if(tc2&&tc2.note) lines.push('📝 '+tc2.note);
@@ -566,8 +662,8 @@ function _c2({truck,clients,orders,onClose}) {
   } else {
     fwdMsg=['🚛 *'+truck.plate+'*','👤 '+truck.driver,'📞 '+truck.phone,'',
       truck.clientName?'🏢 Клиент: *'+truck.clientName+'*':null,
-      truck.loadAddr?'📍 Загрузка: '+truck.loadAddr:null,
-      truck.unloadAddr?'🎯 Выгрузка: '+truck.unloadAddr:null,
+      truck.loadAddr?t('wa_loading')+': '+truck.loadAddr:null,
+      truck.unloadAddr?t('wa_unloading')+': '+truck.unloadAddr:null,
       truck.loadAt?'🕐 Время: '+_q16(truck.loadAt):null,
       (cl&&cl.temp)?'🌡 Темп: '+cl.temp+'°C':null,
       allNotes?'📝 Примечание:\n'+allNotes:null
@@ -578,7 +674,7 @@ function _c2({truck,clients,orders,onClose}) {
     '↩ *ОБРАТНЫЙ ГРУЗ*',
     bc.cargo?'📦 Груз: '+bc.cargo:null,
     bc.from?'📍 Забор: '+bc.from:null,
-    bc.to?'🎯 Выгрузка: '+bc.to:null,
+    bc.to?t('wa_unloading')+': '+bc.to:null,
     bc.departAt?'🕐 Отправление: '+_q16(bc.departAt):null
   ].filter(Boolean).join('\n'):null;
   var driverLink=window.location.href.split('?')[0]+'?pin='+truck.pin;
@@ -598,7 +694,7 @@ function _c2({truck,clients,orders,onClose}) {
         fontSize:11,fontWeight:700,cursor:'pointer',
         background:msgType==='back'?'rgba(6,182,212,.2)':'var(--bg3)',
         border:'1px solid '+(msgType==='back'?'#06b6d4':'var(--border)'),
-        color:msgType==='back'?'#06b6d4':'var(--text3)'}},'↩ Обратный груз')),
+        color:msgType==='back'?'#06b6d4':'var(--text3)'}},t('wa_return_tab'))),
     allNotes&&ce('div',{style:{background:'rgba(59,130,246,.08)',border:'1px solid rgba(59,130,246,.2)',
       borderRadius:8,padding:'8px 10px',marginBottom:8}},
       ce('div',{style:{color:'#3b82f6',fontWeight:700,fontSize:10,marginBottom:4}},'📝 Примечание для водителя:'),
@@ -607,12 +703,12 @@ function _c2({truck,clients,orders,onClose}) {
       fontSize:12,color:'var(--text2)',whiteSpace:'pre-wrap',lineHeight:1.6,marginBottom:10,maxHeight:220,overflowY:'auto'}},activeMsg),
     ce('div',{style:{display:'flex',gap:6,marginBottom:10}},
       ce('button',{onClick:function(){openWA(activeMsg);},style:{flex:1,padding:'10px',background:'#25d366',
-        border:'none',borderRadius:8,color:'#fff',fontWeight:700,fontSize:12,cursor:'pointer'}},'📱 Открыть в WhatsApp'),
+        border:'none',borderRadius:8,color:'#fff',fontWeight:700,fontSize:12,cursor:'pointer'}},t('send_wa')),
       ce('button',{onClick:function(){
         if(truck.phone){var n=truck.phone.replace(/[^0-9]/g,'');window.open('https://max.ru/'+n+'?text='+encodeURIComponent(activeMsg),'_blank');}
         navigator.clipboard&&navigator.clipboard.writeText(activeMsg);
       },style:{flex:1,padding:'10px',background:'#5b21b6',
-        border:'none',borderRadius:8,color:'#fff',fontWeight:700,fontSize:12,cursor:'pointer'}},'🔵 Max'),
+        border:'none',borderRadius:8,color:'#fff',fontWeight:700,fontSize:12,cursor:'pointer'}},t('send_max')),
       ce('button',{onClick:function(){navigator.clipboard&&navigator.clipboard.writeText(activeMsg);},style:{
         padding:'10px 14px',background:'var(--bg3)',border:'1px solid var(--border)',borderRadius:8,
         color:'var(--text2)',fontWeight:700,fontSize:12,cursor:'pointer'}},'📋')),
@@ -633,14 +729,14 @@ function _c2({truck,clients,orders,onClose}) {
           navigator.clipboard&&navigator.clipboard.writeText(txt);
         },style:{flex:1,marginTop:6,padding:'8px',background:'rgba(245,158,11,.12)',
           border:'1px solid rgba(245,158,11,.3)',borderRadius:7,color:'#f59e0b',fontWeight:700,fontSize:11,cursor:'pointer'}},
-        '📤 Ссылка в WA'),
+        t('link_wa')),
       ce('button',{onClick:function(){
           var txt='Ссылка для отметки: '+driverLink+'\nPIN: '+truck.pin;
           if(truck.phone){var n=truck.phone.replace(/[^0-9]/g,'');window.open('https://max.ru/'+n+'?text='+encodeURIComponent(txt),'_blank');}
           navigator.clipboard&&navigator.clipboard.writeText(txt);
         },style:{flex:1,marginTop:6,padding:'8px',background:'rgba(91,33,182,.15)',
           border:'1px solid rgba(91,33,182,.4)',borderRadius:7,color:'#a78bfa',fontWeight:700,fontSize:11,cursor:'pointer'}},
-        '📤 Ссылка в Max')),
+        t('link_max'))),
     ce('button',{onClick:onClose,style:{width:'100%',padding:'9px',background:'var(--bg2)',
       border:'1px solid var(--border)',borderRadius:8,color:'var(--text3)',fontSize:12,fontWeight:700,cursor:'pointer'}},'Закрыть'));
 }
@@ -677,7 +773,7 @@ function _d3({onSave,onClose,maxId}) {
     ),
     hired && ce(Field,{label:'Перевозчик'}, ce(Input,{value:carrier,onChange:setCarrier,placeholder:'ИП Иванов / ООО Транс'})),
     ce('div',{style:{display:'flex',gap:8,marginTop:8}},
-      ce('button',{onClick:onClose,style:{flex:1,padding:'10px',background:'var(--bg2)',border:'1px solid var(--border2)',borderRadius:9,color:'var(--text3)',fontSize:13,fontWeight:700,cursor:'pointer'}},'Отмена'),
+      ce('button',{onClick:onClose,style:{flex:1,padding:'10px',background:'var(--bg2)',border:'1px solid var(--border2)',borderRadius:9,color:'var(--text3)',fontSize:13,fontWeight:700,cursor:'pointer'}},t('btn_cancel')),
       ce('button',{onClick:save,style:{flex:1,padding:'10px',background:'linear-gradient(135deg,#3b82f6,#06b6d4)',border:'none',borderRadius:9,color:'#fff',fontSize:13,fontWeight:800,cursor:'pointer'}},plate&&driver?'Добавить ✓':'Заполните поля')
     )
   );
@@ -813,11 +909,11 @@ function _e4({clients,onSave,onClose,maxId,editOrder}) {
     ce('div',{style:{display:'flex',gap:8,marginTop:4}},
       ce('button',{onClick:onClose,style:{flex:1,padding:'10px',background:'var(--bg2)',
         border:'1px solid var(--border2)',borderRadius:9,color:'var(--text3)',
-        fontSize:13,fontWeight:700,cursor:'pointer'}},'Отмена'),
+        fontSize:13,fontWeight:700,cursor:'pointer'}},t('btn_cancel')),
       ce('button',{onClick:save,style:{flex:1,padding:'10px',
         background:'linear-gradient(135deg,#3b82f6,#06b6d4)',border:'none',
         borderRadius:9,color:'#fff',fontSize:13,fontWeight:800,cursor:'pointer'}},
-        e0?'Сохранить изменения':'Добавить заказ')
+        e0?t('btn_save_changes'):t('btn_save'))
     )
   );
 }
@@ -870,7 +966,7 @@ function _m12({onSave,onClose}) {
     ce('div',{style:{display:'flex',gap:8,marginTop:6}},
       ce('button',{onClick:onClose,style:{flex:1,padding:'11px',background:'var(--bg2)',
         border:'1px solid var(--border2)',borderRadius:9,color:'var(--text3)',
-        fontSize:13,fontWeight:700,cursor:'pointer'}},'Отмена'),
+        fontSize:13,fontWeight:700,cursor:'pointer'}},t('btn_cancel')),
       ce('button',{onClick:save,style:{flex:1,padding:'11px',border:'none',borderRadius:9,
         color:'#fff',fontSize:13,fontWeight:800,cursor:'pointer',
         background:valid?'linear-gradient(135deg,#3b82f6,#06b6d4)':'#253555',
@@ -892,7 +988,7 @@ function _l11({client,onSave,onClose}) {
     unloadOptions:[{city:unloadAddr.split(',')[0]||'',addr:unloadAddr}],
     routeHours:parseInt(routeHours)||20,temp:temp||null,note});
 
-  return ce(Modal,{title:`✏️ Редактировать — ${client.name}`,onClose,wide:true},
+  return ce(Modal,{title:t('modal_client_edit')+' — '+client.name,onClose,wide:true},
     ce('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:8}},
       ce(Field,{label:'Название клиента'}, ce(Input,{value:name,onChange:setName})),
       ce(Field,{label:'Город загрузки'}, ce(Input,{value:loadCity,onChange:setLoadCity}))
@@ -913,7 +1009,7 @@ function _l11({client,onSave,onClose}) {
     ce('div',{style:{display:'flex',gap:8,marginTop:4}},
       ce('button',{onClick:onClose,style:{flex:1,padding:'10px',background:'var(--bg2)',
         border:'1px solid var(--border2)',borderRadius:9,color:'var(--text3)',
-        fontSize:13,fontWeight:700,cursor:'pointer'}},'Отмена'),
+        fontSize:13,fontWeight:700,cursor:'pointer'}},t('btn_cancel')),
       ce('button',{onClick:save,style:{flex:1,padding:'10px',
         background:'linear-gradient(135deg,#3b82f6,#06b6d4)',border:'none',
         borderRadius:9,color:'#fff',fontSize:13,fontWeight:800,cursor:'pointer'}},
@@ -952,7 +1048,7 @@ function _k10({clients,trucks,orders,onSave,onClose}) {
       date:dt,note,createdAt:_u20()});
   };
 
-  return ce(Modal,{title:'📅 Планирование следующего рейса',onClose,wide:true},
+  return ce(Modal,{title:t('modal_plan'),onClose,wide:true},
     ce(Field,{label:'Клиент'},
       ce('div',{style:{display:'flex',gap:5,flexWrap:'wrap'}},
         clients.map(c=>ce('button',{key:c.id,onClick:()=>setCid(c.id),style:{
@@ -1019,7 +1115,7 @@ function _f5({truck,trucks,onSwap,onClose}) {
   var _tid=useState(''); var targetId=_tid[0]; var setTargetId=_tid[1];
   var target=trucks.find(function(t){return String(t.id)===String(targetId);});
   return ce(Modal,{onClose,wide:true},
-    ce('div',{style:{fontWeight:800,fontSize:14,color:'var(--text)',marginBottom:4}},'?? Пересадка водителя'),
+    ce('div',{style:{fontWeight:800,fontSize:14,color:'var(--text)',marginBottom:4}},t('modal_swap')),
     ce('div',{style:{fontSize:10,color:'var(--text3)',marginBottom:12}},
       'Сейчас: ',truck.plate,' · ',truck.driver,' · ',truck.phone),
     ce('div',{style:{fontSize:10,color:'var(--text3)',fontWeight:700,
@@ -1043,7 +1139,7 @@ function _f5({truck,trucks,onSwap,onClose}) {
     ce('div',{style:{display:'flex',gap:7}},
       ce('button',{onClick:onClose,style:{flex:1,padding:9,borderRadius:8,
         border:'1px solid var(--border)',background:'transparent',
-        color:'var(--text3)',fontWeight:700,cursor:'pointer',fontFamily:'inherit'}},'Отмена'),
+        color:'var(--text3)',fontWeight:700,cursor:'pointer',fontFamily:'inherit'}},t('btn_cancel')),
       ce('button',{disabled:!target,onClick:function(){if(target)onSwap(truck.id,target.id);},
         style:{flex:2,padding:9,borderRadius:8,border:'none',
           background:target?'#f59e0b':'#1f2937',color:target?'#111827':'#64748b',
@@ -1118,7 +1214,7 @@ function _g6({truck,onUpdate,onClose}) {
       ),
       ce('button',{onClick:onClose,style:{background:'var(--bg3)',border:'1px solid var(--border)',
         borderRadius:8,padding:'6px 12px',color:'var(--text3)',fontSize:12,
-        fontWeight:700,cursor:'pointer'}},'← Назад')
+        fontWeight:700,cursor:'pointer'}},t('btn_back'))
     ),
     // Trip info
     ce('div',{style:{padding:'10px 14px',background:'var(--bg2)',
@@ -1192,7 +1288,7 @@ function _h7({onOk}) {
       ce('button',{onClick:go,style:{marginTop:12,width:'100%',padding:'13px',
         background:'linear-gradient(135deg,#3b82f6,#06b6d4)',border:'none',
         borderRadius:10,color:'#fff',fontWeight:800,fontSize:14,cursor:'pointer',
-        fontFamily:'inherit',boxShadow:'0 4px 20px rgba(59,130,246,.35)'}},'Войти →'),
+        fontFamily:'inherit',boxShadow:'0 4px 20px rgba(59,130,246,.35)'}},t('btn_login')),
       ce('div',{style:{marginTop:14,padding:'10px 14px',background:'rgba(59,130,246,.06)',
         border:'1px solid rgba(59,130,246,.12)',borderRadius:10,fontSize:12,color:'var(--text3)',textAlign:'center'}},
         'Пароль: ',ce('b',{style:{color:'#60a5fa',cursor:'pointer'},onClick:()=>setPass('demo')},'demo'),
@@ -1236,7 +1332,7 @@ function _i8({truck,clients,orders,onUpdate,onSwapRequest,onOpenDriver}) {
       truck.plate,
       truck.isHired && ce('span',{style:{fontSize:9,color:'#f59e0b',fontWeight:800,
         marginLeft:6,textTransform:'uppercase',letterSpacing:'.5px'}},
-        'Привлечённый · '+truck.carrier)
+        t('lbl_hired')+' · '+truck.carrier)
     ),
     // Driver
     ce('div',{style:{fontSize:10,color:'#4b6a9a',marginBottom:1}},truck.driver),
@@ -1250,32 +1346,32 @@ function _i8({truck,clients,orders,onUpdate,onSwapRequest,onOpenDriver}) {
           fontSize:10,fontWeight:800,background:sc+'25',color:sc,border:`1px solid ${sc}40`,
           whiteSpace:'nowrap'}},sl),
         truck.onService && ce('span',{style:{padding:'2px 5px',borderRadius:20,fontSize:8,
-          fontWeight:700,background:'#f9731620',color:'#f97316'}},'Сервис'),
+          fontWeight:700,background:'#f9731620',color:'#f97316'}},t('flt_service')),
         truck.needService && !truck.onService && ce('span',{style:{padding:'2px 5px',borderRadius:20,
-          fontSize:8,fontWeight:700,background:'#facc1520',color:'#facc15'}},'Нужен сервис')
+          fontSize:8,fontWeight:700,background:'#facc1520',color:'#facc15'}},t('flt_need'))
       ),
       truck.isHired && ce('span',{style:{padding:'2px 6px',borderRadius:20,fontSize:8,
         fontWeight:800,background:'#f59e0b20',color:'#f59e0b',border:'1px solid #f59e0b40',
-        whiteSpace:'nowrap'}},'Привлечённый')
+        whiteSpace:'nowrap'}},t('lbl_hired'))
     ),
 
     // Meta grid (2 cols) — same as EGIDA
     ce('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'2px 6px',
       fontSize:10,marginBottom:6}},
-      ce('div',{style:{color:'var(--text3)'}},'Локация: ',
+      ce('div',{style:{color:'var(--text3)'}},t('lbl_location')+': ',
         ce('span',{style:{color:'var(--text2)',fontWeight:600}},truck.location||'—')),
-      ce('div',{style:{color:'var(--text3)'}},'Путевой: ',
+      ce('div',{style:{color:'var(--text3)'}},t('lbl_waybill')+': ',
         ce('span',{style:{color:wl<=1?'#fb923c':'#22c55e',fontWeight:700}},wl+' рейса')),
-      isMoving && hf!==null && ce('div',{style:{color:'var(--text3)'}},'Освоб: ',
+      isMoving && hf!==null && ce('div',{style:{color:'var(--text3)'}},t('lbl_freed')+': ',
         ce('span',{style:{color:hf<=4?'#22c55e':'#60a5fa',fontWeight:700}},
           hf<=0?'сейчас':'~'+hf+'ч')),
-      cl && ce('div',{style:{color:'var(--text3)'}},'Клиент: ',
+      cl && ce('div',{style:{color:'var(--text3)'}},t('lbl_client')+': ',
         ce('span',{style:{color:cl.color,fontWeight:600,fontSize:9}},cl.name)),
       lastTrip && lastTrip.dir==='forward' && ce('div',{style:{color:'var(--text3)',gridColumn:'1/-1',fontSize:9}},
-        'Везёт туда: ',ce('span',{style:{color:'var(--text)'}},lastTrip.clientName),
+        t('lbl_cargo_to')+': ',ce('span',{style:{color:'var(--text)'}},lastTrip.clientName),
         ' · выгрузит: ',ce('span',{style:{color:'#a78bfa',fontWeight:700}},_q16(truck.freeAt))),
       bc && truck.status==='BACK' && ce('div',{style:{color:'var(--text3)',gridColumn:'1/-1',fontSize:9}},
-        'Везёт обратно: ',ce('span',{style:{color:'#06b6d4',fontWeight:700}},bc.cargo),
+        t('lbl_cargo_back')+': ',ce('span',{style:{color:'#06b6d4',fontWeight:700}},bc.cargo),
         ' · выгрузит: ',ce('span',{style:{color:'#22c55e',fontWeight:700}},_q16(bc.freeAt)))
     ),
 
@@ -1287,32 +1383,32 @@ function _i8({truck,clients,orders,onUpdate,onSwapRequest,onOpenDriver}) {
         ce('input',{type:'checkbox',checked:!!truck.onService,
           onChange:e=>upd({onService:e.target.checked,status:e.target.checked?'SERVICE':(truck.status==='SERVICE'?'FREE':truck.status)}),
           style:{accentColor:'#f97316',width:12,height:12}}),
-        'Машина на сервисе'),
+        t('badge_on_service')),
       ce('label',{style:{display:'flex',alignItems:'center',gap:4,cursor:'pointer',
         fontSize:9,color:truck.needService?'#facc15':'#4b6a9a'}},
         ce('input',{type:'checkbox',checked:!!truck.needService,
           onChange:e=>upd({needService:e.target.checked}),
           style:{accentColor:'#facc15',width:12,height:12}}),
-        'Нужен сервис')
+        t('flt_need'))
     ),
 
     // Back cargo info block (when BACK status)
     bc && truck.status==='BACK' && ce('div',{style:{background:'#0a1929',
       border:'1px solid #06b6d430',borderRadius:7,padding:'6px 10px',marginBottom:6,fontSize:10}},
-      ce('div',{style:{color:'#06b6d4',fontWeight:700,marginBottom:2}},'Обратный груз'),
+      ce('div',{style:{color:'#06b6d4',fontWeight:700,marginBottom:2}},t('lbl_return_cargo')),
       ce('div',{style:{color:'var(--text)',fontWeight:600}},bc.cargo||'—'),
-      bc.from && ce('div',{style:{color:'#4b6a9a'}},'Загрузка: ',bc.from),
-      bc.to && ce('div',{style:{color:'#4b6a9a'}},'Выгрузка: ',bc.to)
+      bc.from && ce('div',{style:{color:'#4b6a9a'}},t('lbl_loading')+': ',bc.from),
+      bc.to && ce('div',{style:{color:'#4b6a9a'}},t('lbl_unloading')+': ',bc.to)
     ),
 
     // Action buttons — same order as EGIDA
     ce('div',{style:{display:'flex',gap:3,flexWrap:'wrap'}},
-      ce(Btn,{onClick:()=>setModal('forward'),color:'#3b82f6'},isMoving?'Изм. клиента':'🚀 В рейс'),
-      ce(Btn,{onClick:()=>setModal('back'),color:'#06b6d4'},'Обратный'),
+      ce(Btn,{onClick:()=>setModal('forward'),color:'#3b82f6'},isMoving?t('btn_change_client'):t('btn_to_route')),
+      ce(Btn,{onClick:()=>setModal('back'),color:'#06b6d4'},t('btn_return')),
       truck.phone && ce(Btn,{onClick:()=>setModal('wa'),color:'#25d366'},'WA'),
-      ce(Btn,{onClick:function(){if(onSwapRequest)onSwapRequest(truck);},color:'#f59e0b'},'Пересадка'),
-      ce(Btn,{onClick:setFree,color:'#22c55e'},'Свободный'),
-      ce(Btn,{onClick:()=>upd({status:'DOCS'}),color:'#fb923c'},'Путевой'),
+      ce(Btn,{onClick:function(){if(onSwapRequest)onSwapRequest(truck);},color:'#f59e0b'},t('btn_swap')),
+      ce(Btn,{onClick:setFree,color:'#22c55e'},t('btn_free_full')),
+      ce(Btn,{onClick:()=>upd({status:'DOCS'}),color:'#fb923c'},t('btn_waybill_btn')),
       ce(Btn,{onClick:()=>onOpenDriver(truck.id),color:'#7a8fa8',sm:true},'📱')
     ),
 
@@ -1351,7 +1447,7 @@ function _j9({trucks,logDate,setLogDate}) {
 
   return ce('div',{style:{flex:1,overflowY:'auto',padding:'10px'}},
     ce('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:12}},
-      ce('h2',{style:{fontWeight:800,color:'#f0f6ff',margin:0,fontSize:16}},'Журнал рейсов'),
+      ce('h2',{style:{fontWeight:800,color:'#f0f6ff',margin:0,fontSize:16}},t('log_title')),
       ce('input',{type:'date',value:logDate,onChange:e=>setLogDate(e.target.value),
         style:{background:'var(--bg2)',border:'1px solid var(--border2)',borderRadius:8,
           padding:'5px 10px',color:'#f0f6ff',fontSize:12}})
@@ -1382,7 +1478,7 @@ function _j9({trucks,logDate,setLogDate}) {
       )
     ),
     entries.length===0 && ce('div',{style:{textAlign:'center',padding:40,color:'var(--text3)'}},
-      '📒 Журнал пуст')
+      t('log_empty'))
   );
 }
 
@@ -1428,7 +1524,7 @@ function App() {
         return t;
       });
     });
-    _p15('✓ Пересадка выполнена');
+    _p15(t('swap_done'));
     setModal(null);
   };
 
@@ -1440,10 +1536,10 @@ function App() {
   }),[trucks,orders]);
 
   const FILTERS = [
-    {id:'ALL',label:'Все'},{id:'FREE',label:'Своб'},{id:'FORWARD',label:'Рейс'},
-    {id:'BACK',label:'Обратный'},{id:'PROBLEM',label:'Проблема'},
-    {id:'SERVICE',label:'Сервис'},{id:'NEED',label:'Нужен сервис'},
-    {id:'DOCS',label:'Путевой'},
+    {id:'ALL',label:t('flt_all')},{id:'FREE',label:t('flt_free')},{id:'FORWARD',label:t('flt_moving')},
+    {id:'BACK',label:t('flt_back')},{id:'PROBLEM',label:t('flt_problem')},
+    {id:'SERVICE',label:t('flt_service')},{id:'NEED',label:t('flt_need')},
+    {id:'DOCS',label:t('flt_docs')},
   ];
 
   const filtered = useMemo(()=>{
@@ -1464,12 +1560,12 @@ function App() {
 
   const isEn = lang==='en';
   const TABS = [
-    {id:'park',   label:`${isEn?'Fleet':'Парк'} (${trucks.length})`},
-    {id:'moving', label:`${isEn?'On route':'Рейс'} (${stats.moving})`},
-    {id:'clients',label:isEn?'Clients':'Клиенты'},
-    {id:'orders', label:(isEn?'Orders':'Заказы')+(orders.length?` (${orders.length})`:'')+``},
-    {id:'future', label:(isEn?'Planning':'Планирование')+(plans.length?` (${plans.length})`:'')+``},
-    {id:'log',    label:isEn?'Log':'Журнал'},
+    {id:'park',   label:`${t('tab_park')} (${trucks.length})`},
+    {id:'moving', label:`${t('tab_moving')} (${stats.moving})`},
+    {id:'clients',label:t('tab_clients')},
+    {id:'orders', label:(t('tab_orders'))+(orders.length?` (${orders.length})`:'')+``},
+    {id:'future', label:(t('tab_future'))+(plans.length?` (${plans.length})`:'')+``},
+    {id:'log',    label:t('tab_log')},
   ];
 
   if(!auth) return ce(_h7,{onOk:()=>setAuth(true)});
@@ -1511,18 +1607,18 @@ function App() {
         ce('div',{style:{display:'flex',gap:12,alignItems:'center'}},
           ce('div',{style:{textAlign:'center'}},
             ce('div',{style:{fontWeight:800,fontSize:16,color:'#22c55e',lineHeight:1}},stats.free),
-            ce('div',{style:{fontSize:9,color:'#253555'}},isEn?'free':'своб')),
+            ce('div',{style:{fontSize:9,color:'#253555'}},t('hdr_free'))),
           ce('div',{style:{textAlign:'center'}},
             ce('div',{style:{fontWeight:800,fontSize:16,color:'#60a5fa',lineHeight:1}},stats.moving),
-            ce('div',{style:{fontSize:9,color:'#253555'}},isEn?'route':'рейс')),
+            ce('div',{style:{fontSize:9,color:'#253555'}},t('hdr_route'))),
           stats.problems>0 && ce('div',{style:{textAlign:'center'}},
             ce('div',{style:{fontWeight:800,fontSize:16,color:'#ef4444',lineHeight:1}},stats.problems),
-            ce('div',{style:{fontSize:9,color:'#253555'}},isEn?'issues':'проблема')),
+            ce('div',{style:{fontSize:9,color:'#253555'}},t('hdr_issues'))),
           ce('button',{onClick:()=>setTheme(t=>t==='dark'?'light':'dark'),style:{
             padding:'5px 10px',borderRadius:6,background:'var(--bg3)',
             color:'var(--text2)',fontWeight:700,fontSize:11,
             border:'1px solid var(--border)',cursor:'pointer',fontFamily:'inherit'}},
-            theme==='dark'?'☀️ Светлая':'🌙 Тёмная'),
+            theme==='dark'?t('btn_theme_light'):t('btn_theme_dark')),
           ce('button',{onClick:()=>{const nl=lang==='ru'?'en':'ru';setLang(nl);window._fletera_lang=nl;},style:{
             padding:'5px 10px',borderRadius:6,background:'var(--bg3)',
             color:lang==='en'?'#60a5fa':'var(--text2)',fontWeight:700,fontSize:11,
@@ -1536,7 +1632,7 @@ function App() {
           },style:{padding:'5px 11px',borderRadius:6,background:'var(--bg)',
             color:'#f59e0b',fontWeight:700,fontSize:11,
             border:'1px solid #f59e0b40',cursor:'pointer',fontFamily:'inherit'}},
-            isEn?'Driver login':'Я водитель')
+            t('btn_driver'))
         )
       )
     ),
@@ -1587,7 +1683,8 @@ function App() {
       ce('div',{style:{fontSize:10,color:'#64748b',marginBottom:8}},
         'Найдено: ',trucks.filter(t=>MOVING.includes(t.status)).length),
       ce('div',{style:{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(300px,1fr))',gap:9}},
-        trucks.filter(t=>MOVING.includes(t.status)).map(t=>{
+        trucks.filter(tk=>MOVING.includes(tk.status)).map(tk=>{
+          const t = tk; // alias for compatibility
           const sc=SC[t.status]||'#7a8fa8', sl=SL[t.status]||t.status;
           const lt=t.trips?.length?t.trips[t.trips.length-1]:null;
           const freeH=t.freeAt?Math.round((new Date(t.freeAt)-now())/3.6e6):null;
@@ -1597,7 +1694,7 @@ function App() {
               ce('div',null,
                 ce('div',{style:{fontWeight:800,fontSize:12,color:'#f0f6ff'}},t.plate),
                 t.isHired&&ce('div',{style:{fontSize:9,color:'#f59e0b',fontWeight:800}},
-                  'Привлечённый · ',t.carrier),
+                  t('lbl_hired')+' · ',t.carrier),
                 ce('div',{style:{fontSize:13,color:'#dbeafe',fontWeight:700,marginTop:2}},t.driver)
               ),
               ce('span',{style:{padding:'3px 9px',borderRadius:20,fontSize:10,fontWeight:800,
@@ -1605,7 +1702,7 @@ function App() {
             ),
             ce('div',{style:{fontSize:10,color:'var(--text2)',marginTop:6}},
               'Маршрут: ',t.loadAddr&&t.unloadAddr?`${t.loadAddr?.split(',')[0]} → ${t.unloadAddr?.split(',')[0]}`:'—',
-              ' · Локация: ',t.location||'—'),
+              ' · '+t('lbl_location')+': ',t.location||'—'),
             // Big blocks ЗАГРУЗКА / ОБРАТКА
             ce('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:6,marginTop:8,marginBottom:6}},
               ce('div',{style:{background:'var(--bg4)',border:'1px solid #a78bfa55',borderRadius:8,padding:'7px 9px'}},
@@ -1645,7 +1742,7 @@ function App() {
             t.backCargo&&ce('div',{style:{
               background:'rgba(6,182,212,0.08)',border:'1px solid #06b6d430',
               borderRadius:7,padding:'7px 9px',marginBottom:8,fontSize:10}},
-              ce('div',{style:{color:'#06b6d4',fontWeight:800,marginBottom:3}},'↩ Обратный груз назначен:'),
+              ce('div',{style:{color:'#06b6d4',fontWeight:800,marginBottom:3}},t('mov_return_assigned')),
               ce('div',{style:{color:'#f0f6ff',fontWeight:700,fontSize:12}},t.backCargo.cargo||'—'),
               t.backCargo.from&&ce('div',{style:{color:'var(--text2)'}},t.backCargo.from,' → ',t.backCargo.to||'—'),
               t.backCargo.departAt&&ce('div',{style:{color:'var(--text2)'}},'Отправление: ',_q16(t.backCargo.departAt)),
@@ -1655,22 +1752,22 @@ function App() {
             false&&ce('div',{style:{fontSize:10,color:'#06b6d4',marginBottom:6}},
               'Обратка: ',t.backCargo.cargo,' · ',
               'Забор: ',_q16(t.backCargo.departAt),' · ',
-              'Выгрузка: ',_q16(t.backCargo.freeAt)
+              t('mov_unload_time')+' ',_q16(t.backCargo.freeAt)
             ),
             // Smart advice
             ce('div',{style:{background:'#0a180a',border:'1px solid #22c55e20',borderRadius:7,
               padding:'7px 9px',fontSize:10,color:'var(--text2)',marginBottom:8}},
               ce('span',{style:{color:'#22c55e',fontWeight:700}},'Совет: '),
-              freeH!==null?(freeH<=6?`Машина освободится через ~${Math.max(0,freeH)}ч. Готовьте обратку.`:`Освободится ~${freeH}ч. Время искать обратный груз.`):'Активный рейс.'
+              freeH!==null?(freeH<=6?t('mov_ready_soon',{h:Math.max(0,freeH)}):t('mov_ready_soon2',{h:freeH})):t('mov_active')
             ),
             // Buttons
             ce('div',{style:{display:'flex',gap:4,flexWrap:'wrap'}},
               ce(Btn,{onClick:()=>setModal({type:'forwardEdit',tid:t.id}),color:'#3b82f6'},'Изменить рейс/клиент'),
               ce(Btn,{onClick:()=>setModal({type:'back',tid:t.id}),color:'#06b6d4'},'Обратка'),
               t.backCargo&&ce(Btn,{onClick:()=>_o14(t.id,{backCargo:null}),color:'#ef4444'},'Снять обратку'),
-              ce(Btn,{onClick:()=>setModal({type:'wa',tid:t.id}),color:'#25d366'},'Сообщение'),
-              ce(Btn,{onClick:()=>setModal({type:'wa',tid:t.id}),color:'#9333ea'},'Ссылка'),
-              ce(Btn,{onClick:()=>_o14(t.id,{status:'FREE',clientId:'',clientName:'',freeAt:_u20(),loadAt:'',backCargo:null,trips:[]}),color:'#22c55e',sm:true},'Своб'),
+              ce(Btn,{onClick:()=>setModal({type:'wa',tid:t.id}),color:'#25d366'},t('btn_message')),
+              ce(Btn,{onClick:()=>setModal({type:'wa',tid:t.id}),color:'#9333ea'},t('btn_link')),
+              ce(Btn,{onClick:()=>_o14(t.id,{status:'FREE',clientId:'',clientName:'',freeAt:_u20(),loadAt:'',backCargo:null,trips:[]}),color:'#22c55e',sm:true},t('btn_free_short')),
             ),
             // Edit modals inline
             
@@ -1689,11 +1786,11 @@ function App() {
 
     tab==='clients' && ce('div',{style:{padding:'12px 14px',maxWidth:1700,margin:'0 auto'}},
       ce('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:12}},
-        ce('h2',{style:{margin:0,fontWeight:800,color:'var(--text)',fontSize:16}},'Клиенты'),
+        ce('h2',{style:{margin:0,fontWeight:800,color:'var(--text)',fontSize:16}},t('clients_title')),
         ce('button',{onClick:function(){setModal('addclient');},style:{
           padding:'6px 14px',borderRadius:7,cursor:'pointer',fontFamily:'inherit',
           fontWeight:800,fontSize:12,border:'1px solid rgba(59,130,246,.4)',
-          background:'rgba(59,130,246,.12)',color:'#3b82f6'}},'+ Добавить клиента')
+          background:'rgba(59,130,246,.12)',color:'#3b82f6'}},t('btn_add_client'))
       ),
       ce('div',{style:{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(280px,1fr))',gap:9}},
         clients.map(c=>{
@@ -1714,7 +1811,7 @@ function App() {
             ce('div',{style:{display:'flex',gap:10,marginTop:6,fontSize:10,color:'var(--text3)'}},
               ce('span',null,'Рейс: ',ce('b',{style:{color:c.color}},c.routeHours,'ч')),
               c.temp&&ce('span',null,'🌡 ',c.temp,'°C'),
-              ce('span',null,'В рейсе: ',ce('b',{style:{color:'#22c55e'}},act.length))
+              ce('span',null,t('clients_active')+': ',ce('b',{style:{color:'#22c55e'}},act.length))
             ),
             c.note&&ce('div',{style:{marginTop:6,padding:'5px 7px',background:'var(--bg3)',
               borderRadius:6,fontSize:10,color:'var(--text2)',borderLeft:'2px solid '+c.color}},
@@ -1742,7 +1839,7 @@ function App() {
         ce('button',{onClick:()=>setModal('addorder'),style:{
           padding:'6px 14px',borderRadius:6,border:'1px solid #22c55e60',
           background:'#22c55e15',color:'#22c55e',fontWeight:800,fontSize:11,
-          cursor:'pointer',fontFamily:'inherit'}},'+ Добавить заказ')
+          cursor:'pointer',fontFamily:'inherit'}},t('btn_add_order'))
       ),
       ce('div',{style:{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(280px,1fr))',gap:9}},
         orders.map(o=>{
@@ -1826,7 +1923,7 @@ function App() {
 
     tab==='future' && ce('div',{style:{padding:'12px 14px',maxWidth:1700,margin:'0 auto'}},
       ce('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:12}},
-        ce('h2',{style:{margin:0,fontWeight:800,color:'var(--text)',fontSize:16}},'Планирование рейсов'),
+        ce('h2',{style:{margin:0,fontWeight:800,color:'var(--text)',fontSize:16}},t('plan_title')),
         ce('button',{onClick:()=>setModal('addplan'),style:{
           padding:'6px 14px',borderRadius:6,border:'1px solid #a78bfa60',
           background:'#a78bfa15',color:'#a78bfa',fontWeight:800,fontSize:11,
@@ -1851,7 +1948,7 @@ function App() {
           p.note&&ce('div',{style:{padding:'4px 7px',background:'var(--bg3)',
             borderRadius:5,fontSize:10,color:'var(--text2)',marginBottom:6}},p.note),
           ce(Btn,{onClick:()=>setPlans(p2=>p2.filter(x=>x.id!==p.id)),
-            color:'#ef4444',sm:true},'Удалить')))
+            color:'#ef4444',sm:true},t('btn_delete'))))
       ),
       modal==='addplan' && ce(_k10,{clients,trucks,orders,
         onSave:p=>{setPlans(prev=>[...prev,p]);setModal(null);_p15('✓ Запланировано');},
@@ -1894,7 +1991,7 @@ function App() {
             ce(Select,{value:sel,onChange:setSel,
               options:free.map(t=>({value:t.id,label:t.plate.split('/')[0].trim()+' — '+t.driver+(t.location?' ('+t.location+')':'')}))})),
           ce('div',{style:{display:'flex',gap:8,marginTop:8}},
-            ce('button',{onClick:()=>setModal(null),style:{flex:1,padding:'10px',background:'var(--bg2)',border:'1px solid var(--border2)',borderRadius:9,color:'var(--text3)',fontSize:13,fontWeight:700,cursor:'pointer'}},'Отмена'),
+            ce('button',{onClick:()=>setModal(null),style:{flex:1,padding:'10px',background:'var(--bg2)',border:'1px solid var(--border2)',borderRadius:9,color:'var(--text3)',fontSize:13,fontWeight:700,cursor:'pointer'}},t('btn_cancel')),
             ce('button',{onClick:()=>{
               const t=trucks.find(x=>x.id==sel);
               const cl=clients.find(c=>c.id===o.cid);
@@ -1922,7 +2019,7 @@ function App() {
             ce(Select,{value:sel,onChange:setSel,
               options:free.map(t=>({value:t.id,label:t.plate.split('/')[0].trim()+' — '+t.driver}))})),
           ce('div',{style:{display:'flex',gap:8,marginTop:8}},
-            ce('button',{onClick:()=>setModal(null),style:{flex:1,padding:'10px',background:'var(--bg2)',border:'1px solid var(--border2)',borderRadius:9,color:'var(--text3)',fontSize:13,fontWeight:700,cursor:'pointer'}},'Отмена'),
+            ce('button',{onClick:()=>setModal(null),style:{flex:1,padding:'10px',background:'var(--bg2)',border:'1px solid var(--border2)',borderRadius:9,color:'var(--text3)',fontSize:13,fontWeight:700,cursor:'pointer'}},t('btn_cancel')),
             ce('button',{onClick:()=>{
               const t=trucks.find(x=>x.id==sel);
               _o14(t.id,{status:'LOADED',clientId:cl.id,clientName:cl.name,
@@ -1941,13 +2038,42 @@ function App() {
 }
 
 
+// ── Error Boundary ────────────────────────────────────────────
+class ErrorBoundary extends React.Component {
+  constructor(p){super(p);this.state={err:null};}
+  static getDerivedStateFromError(e){return {err:e};}
+  componentDidCatch(e,i){console.error('[Fletera Error]',e,i);}
+  render(){
+    if(this.state.err){
+      return React.createElement('div',{style:{
+        display:'flex',alignItems:'center',justifyContent:'center',
+        minHeight:'100vh',background:'#07090f',fontFamily:'sans-serif',
+        flexDirection:'column',gap:16,padding:24,textAlign:'center'
+      }},
+        React.createElement('div',{style:{fontSize:40}},'⚠️'),
+        React.createElement('div',{style:{color:'#f0f6ff',fontWeight:800,fontSize:18}},'Fletera — ошибка'),
+        React.createElement('div',{style:{color:'#64748b',fontSize:12,maxWidth:500,
+          background:'#0f1525',padding:'12px',borderRadius:8,textAlign:'left',
+          fontFamily:'monospace',whiteSpace:'pre-wrap',wordBreak:'break-all'}},
+          this.state.err.message||String(this.state.err)),
+        React.createElement('button',{
+          onClick:()=>window.location.reload(),
+          style:{marginTop:8,padding:'8px 20px',borderRadius:8,background:'#3b82f6',
+            border:'none',color:'#fff',fontWeight:700,cursor:'pointer',fontSize:14}
+        },'Перезагрузить')
+      );
+    }
+    return this.props.children;
+  }
+}
+
 // ── Boot ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function() {
   var container = document.getElementById('root');
   if (!container) { console.error('No #root element'); return; }
   try {
     var root = ReactDOM.createRoot(container);
-    root.render(React.createElement(App));
+    root.render(React.createElement(ErrorBoundary,null,React.createElement(App)));
   } catch(e) {
     container.innerHTML = '<div style="color:#ef4444;padding:20px;font-family:monospace;background:#07090f;min-height:100vh;white-space:pre-wrap">' + (e.stack||e.message) + '</div>';
   }
@@ -1961,7 +2087,7 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
       container._reactRoot = true;
       var root = ReactDOM.createRoot(container);
-      root.render(React.createElement(App));
+      root.render(React.createElement(ErrorBoundary,null,React.createElement(App)));
     } catch(e) {
       container.innerHTML = '<div style="color:#ef4444;padding:20px;font-family:monospace;background:#07090f;min-height:100vh;white-space:pre-wrap">' + (e.stack||e.message) + '</div>';
     }
