@@ -1684,75 +1684,69 @@ function App() {
         'Найдено: ',trucks.filter(t=>MOVING.includes(t.status)).length),
       ce('div',{style:{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(300px,1fr))',gap:9}},
         trucks.filter(tk=>MOVING.includes(tk.status)).map(tk=>{
-          const t = tk; // alias for compatibility
-          const sc=SC[t.status]||'#7a8fa8', sl=SL[t.status]||t.status;
-          const lt=t.trips?.length?t.trips[t.trips.length-1]:null;
-          const freeH=t.freeAt?Math.round((new Date(t.freeAt)-now())/3.6e6):null;
-          return ce('div',{key:t.id,style:{background:'var(--bg2)',
+          const tr = tk;
+          const sc=SC[tr.status]||'#7a8fa8', sl=_SL()[tr.status]||tr.status;
+          const lt=tr.trips?.length?tr.trips[tr.trips.length-1]:null;
+          const freeH=tr.freeAt?Math.round((new Date(tr.freeAt)-now())/3.6e6):null;
+          return ce('div',{key:tr.id,style:{background:'var(--bg2)',
             border:`1px solid ${sc}40`,borderRadius:11,padding:'12px 14px'}},
             ce('div',{style:{display:'flex',justifyContent:'space-between',gap:8}},
               ce('div',null,
-                ce('div',{style:{fontWeight:800,fontSize:12,color:'#f0f6ff'}},t.plate),
-                t.isHired&&ce('div',{style:{fontSize:9,color:'#f59e0b',fontWeight:800}},
-                  t('lbl_hired')+' · ',t.carrier),
-                ce('div',{style:{fontSize:13,color:'#dbeafe',fontWeight:700,marginTop:2}},t.driver)
+                ce('div',{style:{fontWeight:800,fontSize:12,color:'#f0f6ff'}},tr.plate),
+                tr.isHired&&ce('div',{style:{fontSize:9,color:'#f59e0b',fontWeight:800}},
+                  t('lbl_hired')+' · ',tr.carrier),
+                ce('div',{style:{fontSize:13,color:'#dbeafe',fontWeight:700,marginTop:2}},tr.driver)
               ),
               ce('span',{style:{padding:'3px 9px',borderRadius:20,fontSize:10,fontWeight:800,
                 background:sc+'20',color:sc,border:`1px solid ${sc}35`,whiteSpace:'nowrap'}},sl)
             ),
             ce('div',{style:{fontSize:10,color:'var(--text2)',marginTop:6}},
-              'Маршрут: ',t.loadAddr&&t.unloadAddr?`${t.loadAddr?.split(',')[0]} → ${t.unloadAddr?.split(',')[0]}`:'—',
-              ' · '+t('lbl_location')+': ',t.location||'—'),
+              'Маршрут: ',tr.loadAddr&&tr.unloadAddr?`${tr.loadAddr?.split(',')[0]} → ${tr.unloadAddr?.split(',')[0]}`:'—',
+              ' · '+t('lbl_location')+': ',tr.location||'—'),
             // Big blocks ЗАГРУЗКА / ОБРАТКА
             ce('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:6,marginTop:8,marginBottom:6}},
               ce('div',{style:{background:'var(--bg4)',border:'1px solid #a78bfa55',borderRadius:8,padding:'7px 9px'}},
                 ce('div',{style:{fontSize:9,color:'#a78bfa',fontWeight:900,letterSpacing:'1px',textTransform:'uppercase'}},'Загрузка'),
                 ce('div',{style:{fontSize:16,color:'#f0f6ff',fontWeight:900,lineHeight:'1.2'}},
-                  t.loadAt?new Date(t.loadAt).toLocaleDateString('ru',{day:'2-digit',month:'2-digit'})+' '+t.loadAt.slice(11,16):'—')
+                  tr.loadAt?new Date(tr.loadAt).toLocaleDateString('ru',{day:'2-digit',month:'2-digit'})+' '+tr.loadAt.slice(11,16):'—')
               ),
               ce('div',{style:{background:'var(--bg4)',border:'1px solid #06b6d455',borderRadius:8,padding:'7px 9px'}},
                 ce('div',{style:{fontSize:9,color:'#06b6d4',fontWeight:900,letterSpacing:'1px',textTransform:'uppercase'}},'Обратка'),
                 ce('div',{style:{fontSize:16,color:'#f0f6ff',fontWeight:900,lineHeight:'1.2'}},
-                  t.backCargo?.departAt?new Date(t.backCargo.departAt).toLocaleDateString('ru',{day:'2-digit',month:'2-digit'})+' '+t.backCargo.departAt.slice(11,16):'—')
+                  tr.backCargo?.departAt?new Date(tr.backCargo.departAt).toLocaleDateString('ru',{day:'2-digit',month:'2-digit'})+' '+tr.backCargo.departAt.slice(11,16):'—')
               )
             ),
             // ЧТО ВЕЗЁТ / ОБРАТКА
             ce('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:6,marginBottom:6}},
               ce('div',{style:{background:'#0f1020',border:'1px solid #a78bfa55',borderRadius:8,padding:'7px 9px'}},
                 ce('div',{style:{fontSize:9,color:'#a78bfa',fontWeight:900,letterSpacing:'1px',textTransform:'uppercase'}},'Что везёт туда'),
-                (t.trips||[]).filter(function(tr){return tr.dir==='forward';}).length>1
-                  ?ce('div',null,(t.trips||[]).filter(function(tr){return tr.dir==='forward';}).map(function(tr,i){
+                (tr.trips||[]).filter(function(r){return r.dir==='forward';}).length>1
+                  ?ce('div',null,(tr.trips||[]).filter(function(r){return r.dir==='forward';}).map(function(r,i){
                     return ce('div',{key:i,style:{fontSize:11,color:'#f0f6ff',fontWeight:700,
                       borderBottom:'1px solid rgba(167,139,250,0.2)',paddingBottom:3,marginBottom:3}},
                       ce('span',{style:{color:'#a78bfa',marginRight:4}},String(i+1)+'.'),
-                      tr.clientName||'—',
+                      r.clientName||'—',
                       ce('div',{style:{color:'var(--text3)',fontSize:9}},
-                        (tr.from?tr.from.split(',')[0]:'')+(tr.to?' → '+tr.to.split(',')[0]:'')));
+                        (r.from?r.from.split(',')[0]:'')+(r.to?' → '+r.to.split(',')[0]:'')));
                   }))
                   :ce('div',{style:{fontSize:14,color:'#f0f6ff',fontWeight:900,lineHeight:'1.3'}},
-                    t.clientName||(lt&&lt.clientName)||'—')
+                    tr.clientName||(lt&&lt.clientName)||'—')
               ),
               ce('div',{style:{background:'#0f1020',border:'1px solid #06b6d455',borderRadius:8,padding:'7px 9px'}},
                 ce('div',{style:{fontSize:9,color:'#06b6d4',fontWeight:900,letterSpacing:'1px',textTransform:'uppercase'}},'Какая обратка'),
                 ce('div',{style:{fontSize:14,color:'#f0f6ff',fontWeight:900,lineHeight:'1.3'}},
-                  t.backCargo?.cargo||'—')
+                  tr.backCargo?.cargo||'—')
               )
             ),
-            // Back cargo detail — show assigned cargo prominently
-            t.backCargo&&ce('div',{style:{
+            // Back cargo detail
+            tr.backCargo&&ce('div',{style:{
               background:'rgba(6,182,212,0.08)',border:'1px solid #06b6d430',
               borderRadius:7,padding:'7px 9px',marginBottom:8,fontSize:10}},
               ce('div',{style:{color:'#06b6d4',fontWeight:800,marginBottom:3}},t('mov_return_assigned')),
-              ce('div',{style:{color:'#f0f6ff',fontWeight:700,fontSize:12}},t.backCargo.cargo||'—'),
-              t.backCargo.from&&ce('div',{style:{color:'var(--text2)'}},t.backCargo.from,' → ',t.backCargo.to||'—'),
-              t.backCargo.departAt&&ce('div',{style:{color:'var(--text2)'}},'Отправление: ',_q16(t.backCargo.departAt)),
-              t.backCargo.rate&&ce('div',{style:{color:'#22c55e',fontWeight:700}},Number(t.backCargo.rate).toLocaleString(),' ₽')
-            ),
-            // DUMMY for replacement
-            false&&ce('div',{style:{fontSize:10,color:'#06b6d4',marginBottom:6}},
-              'Обратка: ',t.backCargo.cargo,' · ',
-              'Забор: ',_q16(t.backCargo.departAt),' · ',
-              t('mov_unload_time')+' ',_q16(t.backCargo.freeAt)
+              ce('div',{style:{color:'#f0f6ff',fontWeight:700,fontSize:12}},tr.backCargo.cargo||'—'),
+              tr.backCargo.from&&ce('div',{style:{color:'var(--text2)'}},tr.backCargo.from,' → ',tr.backCargo.to||'—'),
+              tr.backCargo.departAt&&ce('div',{style:{color:'var(--text2)'}},'Отправление: ',_q16(tr.backCargo.departAt)),
+              tr.backCargo.rate&&ce('div',{style:{color:'#22c55e',fontWeight:700}},Number(tr.backCargo.rate).toLocaleString(),' ₽')
             ),
             // Smart advice
             ce('div',{style:{background:'#0a180a',border:'1px solid #22c55e20',borderRadius:7,
@@ -1762,20 +1756,19 @@ function App() {
             ),
             // Buttons
             ce('div',{style:{display:'flex',gap:4,flexWrap:'wrap'}},
-              ce(Btn,{onClick:()=>setModal({type:'forwardEdit',tid:t.id}),color:'#3b82f6'},'Изменить рейс/клиент'),
-              ce(Btn,{onClick:()=>setModal({type:'back',tid:t.id}),color:'#06b6d4'},'Обратка'),
-              t.backCargo&&ce(Btn,{onClick:()=>_o14(t.id,{backCargo:null}),color:'#ef4444'},'Снять обратку'),
-              ce(Btn,{onClick:()=>setModal({type:'wa',tid:t.id}),color:'#25d366'},t('btn_message')),
-              ce(Btn,{onClick:()=>setModal({type:'wa',tid:t.id}),color:'#9333ea'},t('btn_link')),
-              ce(Btn,{onClick:()=>_o14(t.id,{status:'FREE',clientId:'',clientName:'',freeAt:_u20(),loadAt:'',backCargo:null,trips:[]}),color:'#22c55e',sm:true},t('btn_free_short')),
+              ce(Btn,{onClick:()=>setModal({type:'forwardEdit',tid:tr.id}),color:'#3b82f6'},'Изменить рейс/клиент'),
+              ce(Btn,{onClick:()=>setModal({type:'back',tid:tr.id}),color:'#06b6d4'},'Обратка'),
+              tr.backCargo&&ce(Btn,{onClick:()=>_o14(tr.id,{backCargo:null}),color:'#ef4444'},'Снять обратку'),
+              ce(Btn,{onClick:()=>setModal({type:'wa',tid:tr.id}),color:'#25d366'},t('btn_message')),
+              ce(Btn,{onClick:()=>setModal({type:'wa',tid:tr.id}),color:'#9333ea'},t('btn_link')),
+              ce(Btn,{onClick:()=>_o14(tr.id,{status:'FREE',clientId:'',clientName:'',freeAt:_u20(),loadAt:'',backCargo:null,trips:[]}),color:'#22c55e',sm:true},t('btn_free_short')),
             ),
             // Edit modals inline
-            
-            modal?.type==='forwardEdit'&&modal.tid===t.id&&ce(_a0,{truck:t,clients,
-              onSave:p=>{_o14(t.id,p);setModal(null);},onClose:()=>setModal(null)}),
-            modal?.type==='back'&&modal.tid===t.id&&ce(_b1,{truck:t,orders,clients,
-              onSave:p=>{_o14(t.id,p);setModal(null);},onClose:()=>setModal(null)}),
-            modal?.type==='wa'&&modal.tid===t.id&&ce(_c2,{truck:t,clients,orders,onClose:()=>setModal(null)})
+            modal?.type==='forwardEdit'&&modal.tid===tr.id&&ce(_a0,{truck:tr,clients,
+              onSave:p=>{_o14(tr.id,p);setModal(null);},onClose:()=>setModal(null)}),
+            modal?.type==='back'&&modal.tid===tr.id&&ce(_b1,{truck:tr,orders,clients,
+              onSave:p=>{_o14(tr.id,p);setModal(null);},onClose:()=>setModal(null)}),
+            modal?.type==='wa'&&modal.tid===tr.id&&ce(_c2,{truck:tr,clients,orders,onClose:()=>setModal(null)})
           );
         })
       ),
